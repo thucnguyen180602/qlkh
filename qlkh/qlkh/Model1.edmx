@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLKHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="MaCV" />
+          </Key>
+          <Property Name="MaCV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenCV" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChungTu">
+          <Key>
+            <PropertyRef Name="ChungTu" />
+          </Key>
+          <Property Name="ChungTu" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Created_By" Type="int" />
+          <Property Name="Deleted_Date" Type="datetime" />
+          <Property Name="Deleted_By" Type="int" />
+          <Property Name="Update_date" Type="datetime" />
+          <Property Name="Update_by" Type="int" />
+          <Property Name="NgayXuat" Type="datetime" />
+          <Property Name="DVX" Type="int" />
+          <Property Name="NCC" Type="int" />
+        </EntityType>
+        <EntityType Name="DonVi">
+          <Key>
+            <PropertyRef Name="MaDV" />
+          </Key>
+          <Property Name="MaDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDV" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDTDV" Type="nchar" MaxLength="10" />
+          <Property Name="DCDV" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DonViTinh">
+          <Key>
+            <PropertyRef Name="MaDVT" />
+          </Key>
+          <Property Name="MaDVT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDVT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HangHoa">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="Barcode" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="TenHH" Type="nvarchar" MaxLength="50" />
+          <Property Name="DonViTinh" Type="int" />
+          <Property Name="XuatXu" Type="int" />
+          <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_Date" Type="datetime" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="Created_By" Type="int" />
+        </EntityType>
+        <EntityType Name="HHTrongKho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MaHH" Type="nvarchar" MaxLength="13" />
+          <Property Name="SL" Type="int" />
+          <Property Name="ChungTu" Type="uniqueidentifier" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GiaMua" Type="float" />
+          <Property Name="GiaBan" Type="float" />
+          <Property Name="MaKH" Type="int" />
+          <Property Name="SLBan" Type="int" />
+        </EntityType>
+        <EntityType Name="HHXK">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ChungTu" Type="uniqueidentifier" />
+          <Property Name="idhhtk" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GiaBan" Type="float" />
+          <Property Name="SLban" Type="int" />
+        </EntityType>
+        <EntityType Name="Kho">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaChiKH" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="100" />
+          <Property Name="SDTNCC" Type="char" MaxLength="10" />
+          <Property Name="EmailNCC" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="QuocGia">
+          <Key>
+            <PropertyRef Name="MaQG" />
+          </Key>
+          <Property Name="MaQG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQG" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="char" MaxLength="100" />
+          <Property Name="PassWord" Type="char" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChucVu" Type="int" />
+          <Property Name="MaKH" Type="int" />
+        </EntityType>
+        <Association Name="FK_ChungTu_DonVi">
+          <End Role="DonVi" Type="Self.DonVi" Multiplicity="0..1" />
+          <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonVi">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="DVX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChungTu_NhaCungCap">
+          <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
+          <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="NCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hanghoa_DonViTinh">
+          <End Role="DonViTinh" Type="Self.DonViTinh" Multiplicity="0..1" />
+          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonViTinh">
+              <PropertyRef Name="MaDVT" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="DonViTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hanghoa_QuocGia">
+          <End Role="QuocGia" Type="Self.QuocGia" Multiplicity="0..1" />
+          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuocGia">
+              <PropertyRef Name="MaQG" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="XuatXu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_ChungTu">
+          <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="0..1" />
+          <End Role="HHTrongKho" Type="Self.HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChungTu">
+              <PropertyRef Name="ChungTu" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="ChungTu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_HangHoa">
+          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="0..1" />
+          <End Role="HHTrongKho" Type="Self.HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangHoa">
+              <PropertyRef Name="Barcode" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="MaHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_Kho">
+          <End Role="Kho" Type="Self.Kho" Multiplicity="0..1" />
+          <End Role="HHTrongKho" Type="Self.HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHXK_ChungTu">
+          <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="0..1" />
+          <End Role="HHXK" Type="Self.HHXK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChungTu">
+              <PropertyRef Name="ChungTu" />
+            </Principal>
+            <Dependent Role="HHXK">
+              <PropertyRef Name="ChungTu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hoadon_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="Created_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaCV" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Kho">
+          <End Role="Kho" Type="Self.Kho" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLKHModelStoreContainer">
+          <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChungTu" EntityType="Self.ChungTu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonVi" EntityType="Self.DonVi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonViTinh" EntityType="Self.DonViTinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HangHoa" EntityType="Self.HangHoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HHTrongKho" EntityType="Self.HHTrongKho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HHXK" EntityType="Self.HHXK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kho" EntityType="Self.Kho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChungTu_DonVi" Association="Self.FK_ChungTu_DonVi">
+            <End Role="DonVi" EntitySet="DonVi" />
+            <End Role="ChungTu" EntitySet="ChungTu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChungTu_NhaCungCap" Association="Self.FK_ChungTu_NhaCungCap">
+            <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+            <End Role="ChungTu" EntitySet="ChungTu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hanghoa_DonViTinh" Association="Self.FK_hanghoa_DonViTinh">
+            <End Role="DonViTinh" EntitySet="DonViTinh" />
+            <End Role="HangHoa" EntitySet="HangHoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hanghoa_QuocGia" Association="Self.FK_hanghoa_QuocGia">
+            <End Role="QuocGia" EntitySet="QuocGia" />
+            <End Role="HangHoa" EntitySet="HangHoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_ChungTu" Association="Self.FK_HHTrongKho_ChungTu">
+            <End Role="ChungTu" EntitySet="ChungTu" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_HangHoa" Association="Self.FK_HHTrongKho_HangHoa">
+            <End Role="HangHoa" EntitySet="HangHoa" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_Kho" Association="Self.FK_HHTrongKho_Kho">
+            <End Role="Kho" EntitySet="Kho" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHXK_ChungTu" Association="Self.FK_HHXK_ChungTu">
+            <End Role="ChungTu" EntitySet="ChungTu" />
+            <End Role="HHXK" EntitySet="HHXK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hoadon_User" Association="Self.FK_hoadon_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ChungTu" EntitySet="ChungTu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_ChucVu" Association="Self.FK_User_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVu" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Kho" Association="Self.FK_User_Kho">
+            <End Role="Kho" EntitySet="Kho" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLKHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLKHEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChucVus" EntityType="QLKHModel.ChucVu" />
+          <EntitySet Name="ChungTus" EntityType="QLKHModel.ChungTu" />
+          <EntitySet Name="DonVis" EntityType="QLKHModel.DonVi" />
+          <EntitySet Name="DonViTinhs" EntityType="QLKHModel.DonViTinh" />
+          <EntitySet Name="HangHoas" EntityType="QLKHModel.HangHoa" />
+          <EntitySet Name="HHTrongKhoes" EntityType="QLKHModel.HHTrongKho" />
+          <EntitySet Name="HHXKs" EntityType="QLKHModel.HHXK" />
+          <EntitySet Name="Khoes" EntityType="QLKHModel.Kho" />
+          <EntitySet Name="NhaCungCaps" EntityType="QLKHModel.NhaCungCap" />
+          <EntitySet Name="QuocGias" EntityType="QLKHModel.QuocGia" />
+          <EntitySet Name="sysdiagrams" EntityType="QLKHModel.sysdiagram" />
+          <EntitySet Name="Users" EntityType="QLKHModel.User" />
+          <AssociationSet Name="FK_User_ChucVu" Association="QLKHModel.FK_User_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChungTu_DonVi" Association="QLKHModel.FK_ChungTu_DonVi">
+            <End Role="DonVi" EntitySet="DonVis" />
+            <End Role="ChungTu" EntitySet="ChungTus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChungTu_NhaCungCap" Association="QLKHModel.FK_ChungTu_NhaCungCap">
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+            <End Role="ChungTu" EntitySet="ChungTus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_ChungTu" Association="QLKHModel.FK_HHTrongKho_ChungTu">
+            <End Role="ChungTu" EntitySet="ChungTus" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKhoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHXK_ChungTu" Association="QLKHModel.FK_HHXK_ChungTu">
+            <End Role="ChungTu" EntitySet="ChungTus" />
+            <End Role="HHXK" EntitySet="HHXKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hoadon_User" Association="QLKHModel.FK_hoadon_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ChungTu" EntitySet="ChungTus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hanghoa_DonViTinh" Association="QLKHModel.FK_hanghoa_DonViTinh">
+            <End Role="DonViTinh" EntitySet="DonViTinhs" />
+            <End Role="HangHoa" EntitySet="HangHoas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hanghoa_QuocGia" Association="QLKHModel.FK_hanghoa_QuocGia">
+            <End Role="QuocGia" EntitySet="QuocGias" />
+            <End Role="HangHoa" EntitySet="HangHoas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_HangHoa" Association="QLKHModel.FK_HHTrongKho_HangHoa">
+            <End Role="HangHoa" EntitySet="HangHoas" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKhoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HHTrongKho_Kho" Association="QLKHModel.FK_HHTrongKho_Kho">
+            <End Role="Kho" EntitySet="Khoes" />
+            <End Role="HHTrongKho" EntitySet="HHTrongKhoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Kho" Association="QLKHModel.FK_User_Kho">
+            <End Role="Kho" EntitySet="Khoes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="MaCV" />
+          </Key>
+          <Property Name="MaCV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenCV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="QLKHModel.FK_User_ChucVu" FromRole="ChucVu" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ChungTu">
+          <Key>
+            <PropertyRef Name="ChungTu1" />
+          </Key>
+          <Property Name="ChungTu1" Type="Guid" Nullable="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Created_By" Type="Int32" />
+          <Property Name="Deleted_Date" Type="DateTime" Precision="3" />
+          <Property Name="Deleted_By" Type="Int32" />
+          <Property Name="Update_date" Type="DateTime" Precision="3" />
+          <Property Name="Update_by" Type="Int32" />
+          <Property Name="NgayXuat" Type="DateTime" Precision="3" />
+          <Property Name="DVX" Type="Int32" />
+          <Property Name="NCC" Type="Int32" />
+          <NavigationProperty Name="DonVi" Relationship="QLKHModel.FK_ChungTu_DonVi" FromRole="ChungTu" ToRole="DonVi" />
+          <NavigationProperty Name="NhaCungCap" Relationship="QLKHModel.FK_ChungTu_NhaCungCap" FromRole="ChungTu" ToRole="NhaCungCap" />
+          <NavigationProperty Name="HHTrongKhoes" Relationship="QLKHModel.FK_HHTrongKho_ChungTu" FromRole="ChungTu" ToRole="HHTrongKho" />
+          <NavigationProperty Name="HHXKs" Relationship="QLKHModel.FK_HHXK_ChungTu" FromRole="ChungTu" ToRole="HHXK" />
+          <NavigationProperty Name="User" Relationship="QLKHModel.FK_hoadon_User" FromRole="ChungTu" ToRole="User" />
+        </EntityType>
+        <EntityType Name="DonVi">
+          <Key>
+            <PropertyRef Name="MaDV" />
+          </Key>
+          <Property Name="MaDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDTDV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DCDV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChungTus" Relationship="QLKHModel.FK_ChungTu_DonVi" FromRole="DonVi" ToRole="ChungTu" />
+        </EntityType>
+        <EntityType Name="DonViTinh">
+          <Key>
+            <PropertyRef Name="MaDVT" />
+          </Key>
+          <Property Name="MaDVT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HangHoas" Relationship="QLKHModel.FK_hanghoa_DonViTinh" FromRole="DonViTinh" ToRole="HangHoa" />
+        </EntityType>
+        <EntityType Name="HangHoa">
+          <Key>
+            <PropertyRef Name="Barcode" />
+          </Key>
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="TenHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DonViTinh" Type="Int32" />
+          <Property Name="XuatXu" Type="Int32" />
+          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_Date" Type="DateTime" Precision="3" />
+          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Created_By" Type="Int32" />
+          <NavigationProperty Name="DonViTinh1" Relationship="QLKHModel.FK_hanghoa_DonViTinh" FromRole="HangHoa" ToRole="DonViTinh" />
+          <NavigationProperty Name="QuocGia" Relationship="QLKHModel.FK_hanghoa_QuocGia" FromRole="HangHoa" ToRole="QuocGia" />
+          <NavigationProperty Name="HHTrongKhoes" Relationship="QLKHModel.FK_HHTrongKho_HangHoa" FromRole="HangHoa" ToRole="HHTrongKho" />
+        </EntityType>
+        <EntityType Name="HHTrongKho">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MaHH" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="SL" Type="Int32" />
+          <Property Name="ChungTu" Type="Guid" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GiaMua" Type="Double" />
+          <Property Name="GiaBan" Type="Double" />
+          <Property Name="MaKH" Type="Int32" />
+          <Property Name="SLBan" Type="Int32" />
+          <NavigationProperty Name="ChungTu1" Relationship="QLKHModel.FK_HHTrongKho_ChungTu" FromRole="HHTrongKho" ToRole="ChungTu" />
+          <NavigationProperty Name="HangHoa" Relationship="QLKHModel.FK_HHTrongKho_HangHoa" FromRole="HHTrongKho" ToRole="HangHoa" />
+          <NavigationProperty Name="Kho" Relationship="QLKHModel.FK_HHTrongKho_Kho" FromRole="HHTrongKho" ToRole="Kho" />
+        </EntityType>
+        <EntityType Name="HHXK">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ChungTu" Type="Guid" />
+          <Property Name="idhhtk" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GiaBan" Type="Double" />
+          <Property Name="SLban" Type="Int32" />
+          <NavigationProperty Name="ChungTu1" Relationship="QLKHModel.FK_HHXK_ChungTu" FromRole="HHXK" ToRole="ChungTu" />
+        </EntityType>
+        <EntityType Name="Kho">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HHTrongKhoes" Relationship="QLKHModel.FK_HHTrongKho_Kho" FromRole="Kho" ToRole="HHTrongKho" />
+          <NavigationProperty Name="Users" Relationship="QLKHModel.FK_User_Kho" FromRole="Kho" ToRole="User" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SDTNCC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="EmailNCC" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ChungTus" Relationship="QLKHModel.FK_ChungTu_NhaCungCap" FromRole="NhaCungCap" ToRole="ChungTu" />
+        </EntityType>
+        <EntityType Name="QuocGia">
+          <Key>
+            <PropertyRef Name="MaQG" />
+          </Key>
+          <Property Name="MaQG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HangHoas" Relationship="QLKHModel.FK_hanghoa_QuocGia" FromRole="QuocGia" ToRole="HangHoa" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChucVu" Type="Int32" />
+          <Property Name="MaKH" Type="Int32" />
+          <NavigationProperty Name="ChucVu1" Relationship="QLKHModel.FK_User_ChucVu" FromRole="User" ToRole="ChucVu" />
+          <NavigationProperty Name="ChungTus" Relationship="QLKHModel.FK_hoadon_User" FromRole="User" ToRole="ChungTu" />
+          <NavigationProperty Name="Kho" Relationship="QLKHModel.FK_User_Kho" FromRole="User" ToRole="Kho" />
+        </EntityType>
+        <Association Name="FK_User_ChucVu">
+          <End Type="QLKHModel.ChucVu" Role="ChucVu" Multiplicity="0..1" />
+          <End Type="QLKHModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaCV" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChungTu_DonVi">
+          <End Type="QLKHModel.DonVi" Role="DonVi" Multiplicity="0..1" />
+          <End Type="QLKHModel.ChungTu" Role="ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonVi">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="DVX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChungTu_NhaCungCap">
+          <End Type="QLKHModel.NhaCungCap" Role="NhaCungCap" Multiplicity="0..1" />
+          <End Type="QLKHModel.ChungTu" Role="ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="NCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_ChungTu">
+          <End Type="QLKHModel.ChungTu" Role="ChungTu" Multiplicity="0..1" />
+          <End Type="QLKHModel.HHTrongKho" Role="HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChungTu">
+              <PropertyRef Name="ChungTu1" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="ChungTu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHXK_ChungTu">
+          <End Type="QLKHModel.ChungTu" Role="ChungTu" Multiplicity="0..1" />
+          <End Type="QLKHModel.HHXK" Role="HHXK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChungTu">
+              <PropertyRef Name="ChungTu1" />
+            </Principal>
+            <Dependent Role="HHXK">
+              <PropertyRef Name="ChungTu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hoadon_User">
+          <End Type="QLKHModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="QLKHModel.ChungTu" Role="ChungTu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChungTu">
+              <PropertyRef Name="Created_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hanghoa_DonViTinh">
+          <End Type="QLKHModel.DonViTinh" Role="DonViTinh" Multiplicity="0..1" />
+          <End Type="QLKHModel.HangHoa" Role="HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonViTinh">
+              <PropertyRef Name="MaDVT" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="DonViTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hanghoa_QuocGia">
+          <End Type="QLKHModel.QuocGia" Role="QuocGia" Multiplicity="0..1" />
+          <End Type="QLKHModel.HangHoa" Role="HangHoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuocGia">
+              <PropertyRef Name="MaQG" />
+            </Principal>
+            <Dependent Role="HangHoa">
+              <PropertyRef Name="XuatXu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_HangHoa">
+          <End Type="QLKHModel.HangHoa" Role="HangHoa" Multiplicity="0..1" />
+          <End Type="QLKHModel.HHTrongKho" Role="HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangHoa">
+              <PropertyRef Name="Barcode" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="MaHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HHTrongKho_Kho">
+          <End Type="QLKHModel.Kho" Role="Kho" Multiplicity="0..1" />
+          <End Type="QLKHModel.HHTrongKho" Role="HHTrongKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HHTrongKho">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Kho">
+          <End Type="QLKHModel.Kho" Role="Kho" Multiplicity="0..1" />
+          <End Type="QLKHModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kho">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLKHModelStoreContainer" CdmEntityContainer="QLKHEntities">
+          <EntitySetMapping Name="ChucVus">
+            <EntityTypeMapping TypeName="QLKHModel.ChucVu">
+              <MappingFragment StoreEntitySet="ChucVu">
+                <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+                <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChungTus">
+            <EntityTypeMapping TypeName="QLKHModel.ChungTu">
+              <MappingFragment StoreEntitySet="ChungTu">
+                <ScalarProperty Name="NCC" ColumnName="NCC" />
+                <ScalarProperty Name="DVX" ColumnName="DVX" />
+                <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />
+                <ScalarProperty Name="Update_by" ColumnName="Update_by" />
+                <ScalarProperty Name="Update_date" ColumnName="Update_date" />
+                <ScalarProperty Name="Deleted_By" ColumnName="Deleted_By" />
+                <ScalarProperty Name="Deleted_Date" ColumnName="Deleted_Date" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ChungTu1" ColumnName="ChungTu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonVis">
+            <EntityTypeMapping TypeName="QLKHModel.DonVi">
+              <MappingFragment StoreEntitySet="DonVi">
+                <ScalarProperty Name="DCDV" ColumnName="DCDV" />
+                <ScalarProperty Name="SDTDV" ColumnName="SDTDV" />
+                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonViTinhs">
+            <EntityTypeMapping TypeName="QLKHModel.DonViTinh">
+              <MappingFragment StoreEntitySet="DonViTinh">
+                <ScalarProperty Name="TenDVT" ColumnName="TenDVT" />
+                <ScalarProperty Name="MaDVT" ColumnName="MaDVT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HangHoas">
+            <EntityTypeMapping TypeName="QLKHModel.HangHoa">
+              <MappingFragment StoreEntitySet="HangHoa">
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
+                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+                <ScalarProperty Name="TenHH" ColumnName="TenHH" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HHTrongKhoes">
+            <EntityTypeMapping TypeName="QLKHModel.HHTrongKho">
+              <MappingFragment StoreEntitySet="HHTrongKho">
+                <ScalarProperty Name="SLBan" ColumnName="SLBan" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ChungTu" ColumnName="ChungTu" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HHXKs">
+            <EntityTypeMapping TypeName="QLKHModel.HHXK">
+              <MappingFragment StoreEntitySet="HHXK">
+                <ScalarProperty Name="SLban" ColumnName="SLban" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idhhtk" ColumnName="idhhtk" />
+                <ScalarProperty Name="ChungTu" ColumnName="ChungTu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoes">
+            <EntityTypeMapping TypeName="QLKHModel.Kho">
+              <MappingFragment StoreEntitySet="Kho">
+                <ScalarProperty Name="DiaChiKH" ColumnName="DiaChiKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaCungCaps">
+            <EntityTypeMapping TypeName="QLKHModel.NhaCungCap">
+              <MappingFragment StoreEntitySet="NhaCungCap">
+                <ScalarProperty Name="EmailNCC" ColumnName="EmailNCC" />
+                <ScalarProperty Name="SDTNCC" ColumnName="SDTNCC" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuocGias">
+            <EntityTypeMapping TypeName="QLKHModel.QuocGia">
+              <MappingFragment StoreEntitySet="QuocGia">
+                <ScalarProperty Name="TenQG" ColumnName="TenQG" />
+                <ScalarProperty Name="MaQG" ColumnName="MaQG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLKHModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QLKHModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

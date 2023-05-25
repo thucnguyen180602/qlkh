@@ -1,0 +1,107 @@
+﻿using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace qlkh
+{
+    public partial class main : DevExpress.XtraBars.Ribbon.RibbonForm
+    {
+        public main()
+        {
+            InitializeComponent();
+        }
+        OverlayWindowOptions options = new OverlayWindowOptions(
+        backColor: Color.Black,
+        opacity: 0.5,
+        fadeIn: false,
+        fadeOut: false
+        );
+        public void openform(Type form)
+        {
+            foreach (Form f in MdiChildren)
+            {
+                if (f.GetType() == form)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+            Form f2 = (Form)Activator.CreateInstance(form);
+            f2.MdiParent = this;
+            if (f2.Name == "PhieuNhap")
+            {
+                taomaphieu();
+            }
+            if(f2.Name == "PhieuXuat")
+            {
+                using (QLKHEntities db = new QLKHEntities())
+                {
+                    Guid maphieu = Guid.NewGuid();
+                    ChungTu c = new ChungTu();
+                    c.ChungTu1 = maphieu;
+                    c.Created_Date = DateTime.Now;
+                    c.Created_By = commons.user.Id;
+                    commons.ct2 = c;
+                    db.ChungTus.Add(c);
+                    db.SaveChanges();
+                }
+            }
+            f2.Show();
+        }
+        IOverlaySplashScreenHandle ShowProgressPanel(Control control, OverlayWindowOptions op)
+        {
+            return SplashScreenManager.ShowOverlayForm(control, op);
+        }
+        private void main_Load(object sender, EventArgs e)
+        {
+            commons.handle = ShowProgressPanel(this, options);
+            login f = new login();
+            f.ShowDialog();
+        }
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(DanhMucHangHoa));
+        }
+
+        public void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(KhoHang));
+        }
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(PhieuNhap));
+        }
+        void taomaphieu()
+        {
+            using (QLKHEntities db = new QLKHEntities())
+            {
+                Guid maphieu = Guid.NewGuid();
+                ChungTu c = new ChungTu();
+                c.ChungTu1 = maphieu;
+                c.Created_Date = DateTime.Now;
+                c.Created_By = commons.user.Id;
+                commons.ct = c;
+                db.ChungTus.Add(c);
+                db.SaveChanges();
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(PhieuXuat));
+        }
+
+        private void ribbon_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

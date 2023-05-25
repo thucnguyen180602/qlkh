@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13caf2b6b8fc4414b3476b1e4eeeabce" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKHModel.ChucVu" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="QLKHModel.ChungTu" Width="1.5" PointX="8.25" PointY="3.125" />
+        <EntityTypeShape EntityType="QLKHModel.DonVi" Width="1.5" PointX="6" PointY="8.5" />
+        <EntityTypeShape EntityType="QLKHModel.DonViTinh" Width="1.5" PointX="1.5" PointY="12.75" />
+        <EntityTypeShape EntityType="QLKHModel.HangHoa" Width="1.5" PointX="3.75" PointY="10.75" />
+        <EntityTypeShape EntityType="QLKHModel.HHTrongKho" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="QLKHModel.HHXK" Width="1.5" PointX="10.5" PointY="4.25" />
+        <EntityTypeShape EntityType="QLKHModel.Kho" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="QLKHModel.NhaCungCap" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="QLKHModel.QuocGia" Width="1.5" PointX="1.5" PointY="10.375" />
+        <EntityTypeShape EntityType="QLKHModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLKHModel.User" Width="1.5" PointX="3" PointY="4" />
+        <AssociationConnector Association="QLKHModel.FK_User_ChucVu" />
+        <AssociationConnector Association="QLKHModel.FK_ChungTu_DonVi" />
+        <AssociationConnector Association="QLKHModel.FK_ChungTu_NhaCungCap" />
+        <AssociationConnector Association="QLKHModel.FK_HHTrongKho_ChungTu" />
+        <AssociationConnector Association="QLKHModel.FK_HHXK_ChungTu" />
+        <AssociationConnector Association="QLKHModel.FK_hoadon_User" />
+        <AssociationConnector Association="QLKHModel.FK_hanghoa_DonViTinh" />
+        <AssociationConnector Association="QLKHModel.FK_hanghoa_QuocGia" />
+        <AssociationConnector Association="QLKHModel.FK_HHTrongKho_HangHoa" />
+        <AssociationConnector Association="QLKHModel.FK_HHTrongKho_Kho" />
+        <AssociationConnector Association="QLKHModel.FK_User_Kho" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
