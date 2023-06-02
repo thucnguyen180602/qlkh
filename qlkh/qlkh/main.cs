@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraSplashScreen;
+using QLK;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -101,6 +102,24 @@ namespace qlkh
 
         private void ribbon_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FrThemkho));
+
+        }
+
+        private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FrNhaCungCap));
+
+        }
+
+        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FrDonVi));
 
         }
     }

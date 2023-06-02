@@ -104,3 +104,6 @@ C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\qlkh.KhoHan
 C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\qlkh.PhieuXuat.resources
 C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\qlkh.XtraForm2.resources
 C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\qlkh.themhhvaophieuxuat.resources
+C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\QLK.FrDonVi.resources
+C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\QLK.FrNhaCungCap.resources
+C:\Users\HP Pavilion 15\OneDrive\Máy tính\qlkh\qlkh\qlkh\obj\Debug\QLK.FrThemkho.resources

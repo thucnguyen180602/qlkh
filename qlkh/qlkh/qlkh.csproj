@@ -86,6 +86,24 @@
     <Compile Include="DonViTinh.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="FrDonVi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrDonVi.designer.cs">
+      <DependentUpon>FrDonVi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrNhaCungCap.designer.cs">
+      <DependentUpon>FrNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrThemkho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrThemkho.designer.cs">
+      <DependentUpon>FrThemkho.cs</DependentUpon>
+    </Compile>
     <Compile Include="HangHoa.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -171,6 +189,15 @@
     </Compile>
     <EmbeddedResource Include="DanhMucHangHoa.resx">
       <DependentUpon>DanhMucHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrDonVi.resx">
+      <DependentUpon>FrDonVi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrNhaCungCap.resx">
+      <DependentUpon>FrNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrThemkho.resx">
+      <DependentUpon>FrThemkho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
