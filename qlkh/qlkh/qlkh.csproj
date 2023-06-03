@@ -86,6 +86,12 @@
     <Compile Include="DonViTinh.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="dsct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsct.Designer.cs">
+      <DependentUpon>dsct.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="DanhMucHangHoa.resx">
       <DependentUpon>DanhMucHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dsct.resx">
+      <DependentUpon>dsct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrDonVi.resx">
       <DependentUpon>FrDonVi.cs</DependentUpon>

@@ -201,10 +201,52 @@ namespace qlkh
 
         private void button1_Click(object sender, EventArgs e)
         {
+            luu();
+        }
+        void luu()
+        {
             var bn = dbContext.ChungTus.FirstOrDefault(x => x.ChungTu1 == commons.ct2.ChungTu1);
             bn.DVX = Convert.ToInt32(comboBox1.SelectedValue);
             bn.NCC = Convert.ToInt32(comboBox1.SelectedValue);
             dbContext.SaveChanges();
+        }
+
+        private void PhieuXuat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Nếu người dùng nhấn nút đóng hoặc Alt+F4
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Hỏi người dùng có muốn lưu thay đổi không
+                var result = MessageBox.Show("Bạn có muốn lưu thay đổi không?", "Xác nhận", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                // Nếu người dùng nhấn Yes, lưu thay đổi và cho phép đóng form
+                if (result == DialogResult.Yes)
+                {
+                    luu();
+                }
+                // Nếu người dùng nhấn Cancel, hủy lệnh đóng form
+                else if (result == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    // Nếu người dùng nhấn No, không làm gì và cho phép đóng form
+
+                    foreach (HHXK item1 in dbContext.HHXKs.Where(x => x.ChungTu == commons.ct2.ChungTu1))
+                        dbContext.HHXKs.Remove(item1);
+
+                    foreach (ChungTu item in dbContext.ChungTus.Where(x => x.ChungTu1 == commons.ct2.ChungTu1))
+                        dbContext.ChungTus.Remove(item);
+                    dbContext.SaveChanges();
+
+                    //xóa cái ct củ
+                    //commons.ct = null;
+                    //commons.ct2 = null;
+
+                }
+
+            }
         }
     }
 }

@@ -122,5 +122,11 @@ namespace qlkh
             openform(typeof(FrDonVi));
 
         }
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(dsct));
+
+        }
     }
 }

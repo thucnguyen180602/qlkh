@@ -265,6 +265,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Name = "PhieuXuat";
             this.Text = "PhieuXuat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PhieuXuat_FormClosing);
             this.Load += new System.EventHandler(this.PhieuXuat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
