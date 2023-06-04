@@ -128,5 +128,21 @@ namespace qlkh
             openform(typeof(dsct));
 
         }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            foreach (Form item in MdiChildren)
+            {
+                item.Close();
+            }
+            login f = new login();
+            f.ShowDialog();
+        }
+
+        private void barStaticItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            // hien thong tin ca nhan
+
+        }
     }
 }
