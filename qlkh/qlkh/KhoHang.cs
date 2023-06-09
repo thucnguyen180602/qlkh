@@ -57,7 +57,7 @@ namespace qlkh
             gridView1.CustomUnboundColumnData += GridView1_CustomUnboundColumnData;
 
 
-            hHTrongKhos = (from a in q.HHTrongKhoes select a).ToList();
+            hHTrongKhos = (from a in q.HHTrongKhoes where a.SL>0 select a).ToList();
         }
 
         private void GridView1_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
@@ -69,14 +69,8 @@ namespace qlkh
 
         decimal getTotalValue(GridView view, int listSourceRowIndex)
         {
-            //decimal unitPrice = Convert.ToDecimal(view.GetListSourceRowCellValue(listSourceRowIndex, "UnitPrice"));
-            //decimal quantity = Convert.ToDecimal(view.GetListSourceRowCellValue(listSourceRowIndex, "Quantity"));
-            //decimal discount = Convert.ToDecimal(view.GetListSourceRowCellValue(listSourceRowIndex, "Discount"));
-            //return unitPrice * quantity * (1 - discount);
-
             //ten hh theo gridview
             var ss = view.GetListSourceRowCellValue(listSourceRowIndex, "TenHH");
-
             int t=0;
             var h = from a in q.HHTrongKhoes select new { a.SL,a.HangHoa.TenHH };
             foreach (var item in h)

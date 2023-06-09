@@ -32,6 +32,11 @@ namespace qlkh
                 if (f.GetType() == form)
                 {
                     f.Activate();
+                    //f.Refresh();
+                    //if (f.Name=="KhoHang")
+                    //{
+                    //    f.Refresh();
+                    //}
                     return;
                 }
             }

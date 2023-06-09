@@ -45,8 +45,8 @@ namespace qlkh
             comboBox1.DataSource = ncc.ToList();
             comboBox1.ValueMember = "MaDV";
             comboBox1.DisplayMember = "TenDV";
-
-            var hh = from a in q.HHTrongKhoes select new {id=a.Id,tenhh=a.HangHoa.TenHH};
+            //chỉ hiện hàng hóa có số lượng lớn hơn 0
+            var hh = from a in q.HHTrongKhoes where a.SL>0 select new {id=a.Id,tenhh=a.HangHoa.TenHH};
             repositoryItemLookUpEdit2.DataSource = hh.ToList();
             repositoryItemLookUpEdit2.ValueMember = "id";
             repositoryItemLookUpEdit2.DisplayMember = "tenhh";
@@ -137,7 +137,7 @@ namespace qlkh
                 }
             }
 
-            if (slban<t)
+            if (slban<=t)
             {
                 int tongsoluong = t;
                 int tslban = slban;
@@ -160,15 +160,15 @@ namespace qlkh
                     }
                     q1.SaveChanges();
                     //xoa
-                    using (QLKHEntities q2 = new QLKHEntities())
-                    {
-                        // Lấy ra danh sách các items có id lớn hơn 10
-                        var items = q2.HHTrongKhoes.Where(i => i.SL == 0).ToList();
-                        // Xóa các items khỏi cơ sở dữ liệu
-                        q2.HHTrongKhoes.RemoveRange(items);
-                        // Lưu thay đổi
-                        q2.SaveChanges();
-                    }
+                    //using (QLKHEntities q2 = new QLKHEntities())
+                    //{
+                    //    // Lấy ra danh sách các items có id lớn hơn 10
+                    //    var items = q2.HHTrongKhoes.Where(i => i.SL == 0).ToList();
+                    //    // Xóa các items khỏi cơ sở dữ liệu
+                    //    q2.HHTrongKhoes.RemoveRange(items);
+                    //    // Lưu thay đổi
+                    //    q2.SaveChanges();
+                    //}
                 }
                 
 
@@ -207,7 +207,6 @@ namespace qlkh
         {
             var bn = dbContext.ChungTus.FirstOrDefault(x => x.ChungTu1 == commons.ct2.ChungTu1);
             bn.DVX = Convert.ToInt32(comboBox1.SelectedValue);
-            bn.NCC = Convert.ToInt32(comboBox1.SelectedValue);
             dbContext.SaveChanges();
         }
 
