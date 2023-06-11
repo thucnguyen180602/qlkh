@@ -192,7 +192,7 @@ namespace qlkh
             if (pkb != null)
             {
                 //e.ChildList = hHTrongKhos.Where(x => x.HangHoa.TenHH == pkb.TenHH).ToList();
-                var hh = from a in q.HHTrongKhoes where a.HangHoa.TenHH == pkb.TenHH select new { TênHàngHóa=a.HangHoa.TenHH, SốLượng=a.SL,NgàyNhập=a.ChungTu1.Created_Date,NhàCungCấp=a.ChungTu1.NCC,id=a.Id };
+                var hh = from a in q.HHTrongKhoes where a.HangHoa.TenHH == pkb.TenHH select new { TênHàngHóa=a.HangHoa.TenHH, SốLượng=a.SL,NgàyNhập=a.ChungTu1.Created_Date,NhàCungCấp=a.ChungTu1.NhaCungCap.TenNCC,id=a.Id,MãChứngTừ =a.ChungTu1.ChungTu1 };
                 
                 //var hh = from a in q.HHTrongKhoes where a.HangHoa.TenHH == pkb.TenHH select a;
                 //
@@ -289,6 +289,11 @@ namespace qlkh
             // Hiển thị kết quả lên label
             label2.Text = s2;
             s = string.Format("Đã chọn: {0}, Tổng số lượng: {1}", count, total);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

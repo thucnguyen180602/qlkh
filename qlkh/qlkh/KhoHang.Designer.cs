@@ -75,7 +75,6 @@
             this.gridColumn2});
             this.gridView2.GridControl = this.gridControl1;
             this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsSelection.MultiSelect = true;
             this.gridView2.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             // 
@@ -131,8 +130,8 @@
             this.gridColumn1,
             this.gridColumn3});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupPanelText = "Danh sách hàng hóa";
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.MasterRowEmpty += new DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventHandler(this.gridView1_MasterRowEmpty);
@@ -193,6 +192,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(300, 60);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // comboBox2
             // 

@@ -51,8 +51,8 @@ namespace qlkh
             repositoryItemLookUpEdit3.ValueMember = "MaQG";
             repositoryItemLookUpEdit3.DisplayMember = "TenQG";
             //C.ColumnEdit = repositoryItemLookUpEdit3;
-
-            gridView1.ActiveFilterString = "[NhaCungCap] = 1";
+            //lọc
+            //gridView1.ActiveFilterString = "[NhaCungCap] = 1";
         }
 
         private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
