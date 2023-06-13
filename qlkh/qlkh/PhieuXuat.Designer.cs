@@ -41,6 +41,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -55,6 +56,10 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -87,6 +92,7 @@
             // 
             // splitContainerControl1.Panel1
             // 
+            this.splitContainerControl1.Panel1.Controls.Add(this.label1);
             this.splitContainerControl1.Panel1.Controls.Add(this.comboBox1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             // 
@@ -97,12 +103,21 @@
             this.splitContainerControl1.Size = new System.Drawing.Size(841, 494);
             this.splitContainerControl1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Xuất đến:";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(434, 28);
+            this.comboBox1.Location = new System.Drawing.Point(120, 30);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 36);
+            this.comboBox1.Size = new System.Drawing.Size(193, 36);
             this.comboBox1.TabIndex = 0;
             // 
             // splitContainerControl2
@@ -119,10 +134,14 @@
             // 
             // splitContainerControl2.Panel2
             // 
+            this.splitContainerControl2.Panel2.Controls.Add(this.textBox1);
+            this.splitContainerControl2.Panel2.Controls.Add(this.dateTimePicker1);
+            this.splitContainerControl2.Panel2.Controls.Add(this.label3);
+            this.splitContainerControl2.Panel2.Controls.Add(this.label2);
             this.splitContainerControl2.Panel2.Controls.Add(this.button1);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(841, 382);
-            this.splitContainerControl2.SplitterPosition = 258;
+            this.splitContainerControl2.SplitterPosition = 285;
             this.splitContainerControl2.TabIndex = 0;
             // 
             // gridControl1
@@ -138,7 +157,7 @@
             this.repositoryItemButtonEdit2,
             this.repositoryItemLookUpEdit2,
             this.repositoryItemSpinEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(841, 258);
+            this.gridControl1.Size = new System.Drawing.Size(841, 285);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -247,6 +266,38 @@
             this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit2.Click += new System.EventHandler(this.repositoryItemButtonEdit2_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(140, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(283, 35);
+            this.textBox1.TabIndex = 4;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(140, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(283, 35);
+            this.dateTimePicker1.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 28);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ghi chú:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 28);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Ngày xuất:";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(698, 22);
@@ -269,6 +320,7 @@
             this.Load += new System.EventHandler(this.PhieuXuat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
+            this.splitContainerControl1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
             this.splitContainerControl1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -277,6 +329,7 @@
             this.splitContainerControl2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).EndInit();
             this.splitContainerControl2.Panel2.ResumeLayout(false);
+            this.splitContainerControl2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -309,5 +362,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

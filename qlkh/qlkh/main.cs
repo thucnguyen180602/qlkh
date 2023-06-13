@@ -74,7 +74,14 @@ namespace qlkh
         }
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openform(typeof(DanhMucHangHoa));
+            if (commons.user.ChucVu1.TenCV == "Nhân viên")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(DanhMucHangHoa));
+            }
         }
 
         public void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
@@ -112,19 +119,41 @@ namespace qlkh
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openform(typeof(FrThemkho));
+            if (commons.user.ChucVu1.TenCV == "Nhân viên" || commons.user.ChucVu1.TenCV == "Quản lý")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(FrThemkho));
+            }
 
         }
 
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openform(typeof(FrNhaCungCap));
+            if (commons.user.ChucVu1.TenCV == "Nhân viên" || commons.user.ChucVu1.TenCV == "Quản lý")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(FrNhaCungCap));
+            }
 
         }
 
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openform(typeof(FrDonVi));
+            if (commons.user.ChucVu1.TenCV == "Nhân viên" || commons.user.ChucVu1.TenCV == "Quản lý")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(FrDonVi));
+
+            }
 
         }
 
@@ -148,6 +177,26 @@ namespace qlkh
         {
             // hien thong tin ca nhan
 
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (commons.user.ChucVu1.TenCV == "Nhân viên")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(DoanhThu));
+            }
+        }
+
+        private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (commons.user.ChucVu1.TenCV== "admin")
+            {
+
+            }
         }
     }
 }

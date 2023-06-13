@@ -33,6 +33,7 @@ namespace qlkh
         public Nullable<System.DateTime> NgayXuat { get; set; }
         public Nullable<int> DVX { get; set; }
         public Nullable<int> NCC { get; set; }
+        public Nullable<System.DateTime> NgayNhap { get; set; }
     
         public virtual DonVi DonVi { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }

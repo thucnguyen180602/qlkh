@@ -28,6 +28,7 @@
           <Property Name="NgayXuat" Type="datetime" />
           <Property Name="DVX" Type="int" />
           <Property Name="NCC" Type="int" />
+          <Property Name="NgayNhap" Type="datetime" />
         </EntityType>
         <EntityType Name="DonVi">
           <Key>
@@ -222,6 +223,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HHXK_HHTrongKho">
+          <End Role="HHTrongKho" Type="Self.HHTrongKho" Multiplicity="0..1" />
+          <End Role="HHXK" Type="Self.HHXK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HHTrongKho">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HHXK">
+              <PropertyRef Name="idhhtk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_hoadon_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="*" />
@@ -303,6 +316,10 @@
             <End Role="ChungTu" EntitySet="ChungTu" />
             <End Role="HHXK" EntitySet="HHXK" />
           </AssociationSet>
+          <AssociationSet Name="FK_HHXK_HHTrongKho" Association="Self.FK_HHXK_HHTrongKho">
+            <End Role="HHTrongKho" EntitySet="HHTrongKho" />
+            <End Role="HHXK" EntitySet="HHXK" />
+          </AssociationSet>
           <AssociationSet Name="FK_hoadon_User" Association="Self.FK_hoadon_User">
             <End Role="User" EntitySet="User" />
             <End Role="ChungTu" EntitySet="ChungTu" />
@@ -373,6 +390,10 @@
             <End Role="Kho" EntitySet="Khoes" />
             <End Role="HHTrongKho" EntitySet="HHTrongKhoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_HHXK_HHTrongKho" Association="QLKHModel.FK_HHXK_HHTrongKho">
+            <End Role="HHTrongKho" EntitySet="HHTrongKhoes" />
+            <End Role="HHXK" EntitySet="HHXKs" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Kho" Association="QLKHModel.FK_User_Kho">
             <End Role="Kho" EntitySet="Khoes" />
             <End Role="User" EntitySet="Users" />
@@ -402,6 +423,7 @@
           <Property Name="NgayXuat" Type="DateTime" Precision="3" />
           <Property Name="DVX" Type="Int32" />
           <Property Name="NCC" Type="Int32" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DonVi" Relationship="QLKHModel.FK_ChungTu_DonVi" FromRole="ChungTu" ToRole="DonVi" />
           <NavigationProperty Name="NhaCungCap" Relationship="QLKHModel.FK_ChungTu_NhaCungCap" FromRole="ChungTu" ToRole="NhaCungCap" />
           <NavigationProperty Name="HHTrongKhoes" Relationship="QLKHModel.FK_HHTrongKho_ChungTu" FromRole="ChungTu" ToRole="HHTrongKho" />
@@ -457,6 +479,7 @@
           <NavigationProperty Name="ChungTu1" Relationship="QLKHModel.FK_HHTrongKho_ChungTu" FromRole="HHTrongKho" ToRole="ChungTu" />
           <NavigationProperty Name="HangHoa" Relationship="QLKHModel.FK_HHTrongKho_HangHoa" FromRole="HHTrongKho" ToRole="HangHoa" />
           <NavigationProperty Name="Kho" Relationship="QLKHModel.FK_HHTrongKho_Kho" FromRole="HHTrongKho" ToRole="Kho" />
+          <NavigationProperty Name="HHXKs" Relationship="QLKHModel.FK_HHXK_HHTrongKho" FromRole="HHTrongKho" ToRole="HHXK" />
         </EntityType>
         <EntityType Name="HHXK">
           <Key>
@@ -468,6 +491,7 @@
           <Property Name="GiaBan" Type="Double" />
           <Property Name="SLban" Type="Int32" />
           <NavigationProperty Name="ChungTu1" Relationship="QLKHModel.FK_HHXK_ChungTu" FromRole="HHXK" ToRole="ChungTu" />
+          <NavigationProperty Name="HHTrongKho" Relationship="QLKHModel.FK_HHXK_HHTrongKho" FromRole="HHXK" ToRole="HHTrongKho" />
         </EntityType>
         <EntityType Name="Kho">
           <Key>
@@ -641,6 +665,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HHXK_HHTrongKho">
+          <End Type="QLKHModel.HHTrongKho" Role="HHTrongKho" Multiplicity="0..1" />
+          <End Type="QLKHModel.HHXK" Role="HHXK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HHTrongKho">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HHXK">
+              <PropertyRef Name="idhhtk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Kho">
           <End Type="QLKHModel.Kho" Role="Kho" Multiplicity="0..1" />
           <End Type="QLKHModel.User" Role="User" Multiplicity="*" />
@@ -670,6 +706,7 @@
           <EntitySetMapping Name="ChungTus">
             <EntityTypeMapping TypeName="QLKHModel.ChungTu">
               <MappingFragment StoreEntitySet="ChungTu">
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
                 <ScalarProperty Name="NCC" ColumnName="NCC" />
                 <ScalarProperty Name="DVX" ColumnName="DVX" />
                 <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />

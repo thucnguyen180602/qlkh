@@ -264,6 +264,7 @@ namespace qlkh
             var bn = dbContext.ChungTus.FirstOrDefault(x => x.ChungTu1 == commons.ct.ChungTu1);
             bn.GhiChu = textBox1.Text;
             bn.NCC =Convert.ToInt32(comboBox1.SelectedValue);
+            bn.NgayNhap = Convert.ToDateTime(dateTimePicker1.Text);
             dbContext.SaveChanges();
         }
 

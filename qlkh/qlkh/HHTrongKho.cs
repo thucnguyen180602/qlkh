@@ -14,6 +14,12 @@ namespace qlkh
     
     public partial class HHTrongKho
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HHTrongKho()
+        {
+            this.HHXKs = new HashSet<HHXK>();
+        }
+    
         public string MaHH { get; set; }
         public Nullable<int> SL { get; set; }
         public Nullable<System.Guid> ChungTu { get; set; }
@@ -26,5 +32,7 @@ namespace qlkh
         public virtual ChungTu ChungTu1 { get; set; }
         public virtual HangHoa HangHoa { get; set; }
         public virtual Kho Kho { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HHXK> HHXKs { get; set; }
     }
 }

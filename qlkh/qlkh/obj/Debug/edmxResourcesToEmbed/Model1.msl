@@ -12,6 +12,7 @@
     <EntitySetMapping Name="ChungTus">
       <EntityTypeMapping TypeName="QLKHModel.ChungTu">
         <MappingFragment StoreEntitySet="ChungTu">
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="NCC" ColumnName="NCC" />
           <ScalarProperty Name="DVX" ColumnName="DVX" />
           <ScalarProperty Name="NgayXuat" ColumnName="NgayXuat" />

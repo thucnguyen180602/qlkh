@@ -15,6 +15,7 @@ using System.Diagnostics;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.Utils.MVVM;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DevExpress.XtraEditors.Filtering.Templates;
 
 namespace qlkh
 {
@@ -207,6 +208,8 @@ namespace qlkh
         {
             var bn = dbContext.ChungTus.FirstOrDefault(x => x.ChungTu1 == commons.ct2.ChungTu1);
             bn.DVX = Convert.ToInt32(comboBox1.SelectedValue);
+            bn.GhiChu = textBox1.Text;
+            bn.NgayXuat = Convert.ToDateTime(dateTimePicker1.Text);
             dbContext.SaveChanges();
         }
 

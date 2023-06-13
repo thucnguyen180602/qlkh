@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace qlkh
         QLKHEntities q = new QLKHEntities();
         private void dsct_Load(object sender, EventArgs e)
         {
+            
             //gridControl1.DataSource = q.ChungTus.ToList();
 
             string[] cities = new string[] { "Phiếu nhập kho", "Phiếu xuất kho" };
@@ -40,7 +42,8 @@ namespace qlkh
             repositoryItemLookUpEdit1.ValueMember = "Id";
             repositoryItemLookUpEdit1.DisplayMember = "FullName";
 
-            
+            hHTrongKhos = (from a in q.HHTrongKhoes select a).ToList();
+            hhxk= (from a in q.HHXKs select a).ToList();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,6 +66,54 @@ namespace qlkh
                 gridColumn5.Visible = true;
                 gridColumn6.Visible = true;
             }
+        }
+        List<HHTrongKho> hHTrongKhos = new List<HHTrongKho>();
+        List<HHXK> hhxk = new List<HHXK>();
+
+        private void gridView1_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        {
+            GridView v = sender as GridView;
+            ChungTu pkb = v.GetRow(e.RowHandle) as ChungTu;
+            if (pkb != null)
+            {
+                if (comboBox1.SelectedIndex==0)
+                {
+                    e.IsEmpty = !hHTrongKhos.Any(x => x.ChungTu == pkb.ChungTu1);
+                }
+                else
+                {
+                    e.IsEmpty = !hhxk.Any(x => x.ChungTu == pkb.ChungTu1);
+                }
+            }
+        }
+
+        private void gridView1_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+            GridView v = sender as GridView;
+            ChungTu pkb = v.GetRow(e.RowHandle) as ChungTu;
+            if (pkb != null)
+            {
+                if (comboBox1.SelectedIndex==0)
+                {
+                    var hh = from a in q.HHTrongKhoes where a.ChungTu == pkb.ChungTu1 select new { TênHàngHóa = a.HangHoa.TenHH, SốLượng = a.SL, GíaMua = a.GiaMua, NhàCungCấp = a.ChungTu1.NhaCungCap.TenNCC, id = a.Id, };
+                    e.ChildList = hh.ToList();
+                }
+                else
+                {
+                    var hh = from a in q.HHXKs where a.ChungTu == pkb.ChungTu1 select new { TênHàngHóa = a.HHTrongKho.HangHoa.TenHH, SốLượngBán = a.SLban, GíaBán = a.GiaBan, NhàCungCấp = a.HHTrongKho.ChungTu1.NhaCungCap.TenNCC, id = a.idhhtk, };
+                    e.ChildList = hh.ToList();
+                }
+            }
+        }
+
+        private void gridView1_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 1;
+        }
+
+        private void gridView1_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "Chi tiết";//detail
         }
     }
 }

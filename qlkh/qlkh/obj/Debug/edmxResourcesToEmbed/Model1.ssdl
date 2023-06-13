@@ -23,6 +23,7 @@
     <Property Name="NgayXuat" Type="datetime" />
     <Property Name="DVX" Type="int" />
     <Property Name="NCC" Type="int" />
+    <Property Name="NgayNhap" Type="datetime" />
   </EntityType>
   <EntityType Name="DonVi">
     <Key>
@@ -217,6 +218,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HHXK_HHTrongKho">
+    <End Role="HHTrongKho" Type="Self.HHTrongKho" Multiplicity="0..1" />
+    <End Role="HHXK" Type="Self.HHXK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HHTrongKho">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HHXK">
+        <PropertyRef Name="idhhtk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_hoadon_User">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="ChungTu" Type="Self.ChungTu" Multiplicity="*" />
@@ -296,6 +309,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_HHXK_ChungTu" Association="Self.FK_HHXK_ChungTu">
       <End Role="ChungTu" EntitySet="ChungTu" />
+      <End Role="HHXK" EntitySet="HHXK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HHXK_HHTrongKho" Association="Self.FK_HHXK_HHTrongKho">
+      <End Role="HHTrongKho" EntitySet="HHTrongKho" />
       <End Role="HHXK" EntitySet="HHXK" />
     </AssociationSet>
     <AssociationSet Name="FK_hoadon_User" Association="Self.FK_hoadon_User">

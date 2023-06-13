@@ -21,5 +21,6 @@ namespace qlkh
         public Nullable<int> SLban { get; set; }
     
         public virtual ChungTu ChungTu1 { get; set; }
+        public virtual HHTrongKho HHTrongKho { get; set; }
     }
 }
