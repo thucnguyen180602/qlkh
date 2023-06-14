@@ -53,11 +53,11 @@
           <Property Name="Barcode" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="TenHH" Type="nvarchar" MaxLength="50" />
           <Property Name="DonViTinh" Type="int" />
-          <Property Name="XuatXu" Type="int" />
           <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
           <Property Name="Created_Date" Type="datetime" />
           <Property Name="Disabled" Type="bit" />
           <Property Name="Created_By" Type="int" />
+          <Property Name="XuatXu" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="HHTrongKho">
           <Key>
@@ -98,13 +98,6 @@
           <Property Name="TenNCC" Type="nvarchar" MaxLength="100" />
           <Property Name="SDTNCC" Type="char" MaxLength="10" />
           <Property Name="EmailNCC" Type="nchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="QuocGia">
-          <Key>
-            <PropertyRef Name="MaQG" />
-          </Key>
-          <Property Name="MaQG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenQG" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -160,18 +153,6 @@
             </Principal>
             <Dependent Role="HangHoa">
               <PropertyRef Name="DonViTinh" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_hanghoa_QuocGia">
-          <End Role="QuocGia" Type="Self.QuocGia" Multiplicity="0..1" />
-          <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QuocGia">
-              <PropertyRef Name="MaQG" />
-            </Principal>
-            <Dependent Role="HangHoa">
-              <PropertyRef Name="XuatXu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -281,7 +262,6 @@
           <EntitySet Name="HHXK" EntityType="Self.HHXK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kho" EntityType="Self.Kho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ChungTu_DonVi" Association="Self.FK_ChungTu_DonVi">
@@ -294,10 +274,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_hanghoa_DonViTinh" Association="Self.FK_hanghoa_DonViTinh">
             <End Role="DonViTinh" EntitySet="DonViTinh" />
-            <End Role="HangHoa" EntitySet="HangHoa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_hanghoa_QuocGia" Association="Self.FK_hanghoa_QuocGia">
-            <End Role="QuocGia" EntitySet="QuocGia" />
             <End Role="HangHoa" EntitySet="HangHoa" />
           </AssociationSet>
           <AssociationSet Name="FK_HHTrongKho_ChungTu" Association="Self.FK_HHTrongKho_ChungTu">
@@ -347,7 +323,6 @@
           <EntitySet Name="HHXKs" EntityType="QLKHModel.HHXK" />
           <EntitySet Name="Khoes" EntityType="QLKHModel.Kho" />
           <EntitySet Name="NhaCungCaps" EntityType="QLKHModel.NhaCungCap" />
-          <EntitySet Name="QuocGias" EntityType="QLKHModel.QuocGia" />
           <EntitySet Name="sysdiagrams" EntityType="QLKHModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="QLKHModel.User" />
           <AssociationSet Name="FK_User_ChucVu" Association="QLKHModel.FK_User_ChucVu">
@@ -376,10 +351,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_hanghoa_DonViTinh" Association="QLKHModel.FK_hanghoa_DonViTinh">
             <End Role="DonViTinh" EntitySet="DonViTinhs" />
-            <End Role="HangHoa" EntitySet="HangHoas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_hanghoa_QuocGia" Association="QLKHModel.FK_hanghoa_QuocGia">
-            <End Role="QuocGia" EntitySet="QuocGias" />
             <End Role="HangHoa" EntitySet="HangHoas" />
           </AssociationSet>
           <AssociationSet Name="FK_HHTrongKho_HangHoa" Association="QLKHModel.FK_HHTrongKho_HangHoa">
@@ -455,13 +426,12 @@
           <Property Name="Barcode" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="TenHH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DonViTinh" Type="Int32" />
-          <Property Name="XuatXu" Type="Int32" />
           <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Created_Date" Type="DateTime" Precision="3" />
           <Property Name="Disabled" Type="Boolean" />
           <Property Name="Created_By" Type="Int32" />
+          <Property Name="XuatXu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DonViTinh1" Relationship="QLKHModel.FK_hanghoa_DonViTinh" FromRole="HangHoa" ToRole="DonViTinh" />
-          <NavigationProperty Name="QuocGia" Relationship="QLKHModel.FK_hanghoa_QuocGia" FromRole="HangHoa" ToRole="QuocGia" />
           <NavigationProperty Name="HHTrongKhoes" Relationship="QLKHModel.FK_HHTrongKho_HangHoa" FromRole="HangHoa" ToRole="HHTrongKho" />
         </EntityType>
         <EntityType Name="HHTrongKho">
@@ -512,14 +482,6 @@
           <Property Name="SDTNCC" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="EmailNCC" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ChungTus" Relationship="QLKHModel.FK_ChungTu_NhaCungCap" FromRole="NhaCungCap" ToRole="ChungTu" />
-        </EntityType>
-        <EntityType Name="QuocGia">
-          <Key>
-            <PropertyRef Name="MaQG" />
-          </Key>
-          <Property Name="MaQG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenQG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HangHoas" Relationship="QLKHModel.FK_hanghoa_QuocGia" FromRole="QuocGia" ToRole="HangHoa" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -629,18 +591,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_hanghoa_QuocGia">
-          <End Type="QLKHModel.QuocGia" Role="QuocGia" Multiplicity="0..1" />
-          <End Type="QLKHModel.HangHoa" Role="HangHoa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="QuocGia">
-              <PropertyRef Name="MaQG" />
-            </Principal>
-            <Dependent Role="HangHoa">
-              <PropertyRef Name="XuatXu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HHTrongKho_HangHoa">
           <End Type="QLKHModel.HangHoa" Role="HangHoa" Multiplicity="0..1" />
           <End Type="QLKHModel.HHTrongKho" Role="HHTrongKho" Multiplicity="*" />
@@ -743,11 +693,11 @@
           <EntitySetMapping Name="HangHoas">
             <EntityTypeMapping TypeName="QLKHModel.HangHoa">
               <MappingFragment StoreEntitySet="HangHoa">
+                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
                 <ScalarProperty Name="Created_By" ColumnName="Created_By" />
                 <ScalarProperty Name="Disabled" ColumnName="Disabled" />
                 <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
                 <ScalarProperty Name="TenTat" ColumnName="TenTat" />
-                <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
                 <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
                 <ScalarProperty Name="TenHH" ColumnName="TenHH" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
@@ -795,14 +745,6 @@
                 <ScalarProperty Name="SDTNCC" ColumnName="SDTNCC" />
                 <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QuocGias">
-            <EntityTypeMapping TypeName="QLKHModel.QuocGia">
-              <MappingFragment StoreEntitySet="QuocGia">
-                <ScalarProperty Name="TenQG" ColumnName="TenQG" />
-                <ScalarProperty Name="MaQG" ColumnName="MaQG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

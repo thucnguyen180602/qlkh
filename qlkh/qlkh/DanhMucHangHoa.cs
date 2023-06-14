@@ -42,14 +42,6 @@ namespace qlkh
             repositoryItemLookUpEdit1.DisplayMember= "TenDVT";
             colDonViTinh.ColumnEdit = repositoryItemLookUpEdit1;
 
-            repositoryItemLookUpEdit2.DataSource = q.NhaCungCaps.ToList();
-            repositoryItemLookUpEdit2.ValueMember = "MaNCC";
-            repositoryItemLookUpEdit2.DisplayMember = "TenNCC";
-            colNhaCungCap.ColumnEdit = repositoryItemLookUpEdit2;
-
-            repositoryItemLookUpEdit3.DataSource = q.QuocGias.ToList();
-            repositoryItemLookUpEdit3.ValueMember = "MaQG";
-            repositoryItemLookUpEdit3.DisplayMember = "TenQG";
             //C.ColumnEdit = repositoryItemLookUpEdit3;
             //lọc
             //gridView1.ActiveFilterString = "[NhaCungCap] = 1";

@@ -49,11 +49,11 @@
     <EntitySetMapping Name="HangHoas">
       <EntityTypeMapping TypeName="QLKHModel.HangHoa">
         <MappingFragment StoreEntitySet="HangHoa">
+          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
           <ScalarProperty Name="Created_By" ColumnName="Created_By" />
           <ScalarProperty Name="Disabled" ColumnName="Disabled" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
           <ScalarProperty Name="TenTat" ColumnName="TenTat" />
-          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
           <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
           <ScalarProperty Name="TenHH" ColumnName="TenHH" />
           <ScalarProperty Name="Barcode" ColumnName="Barcode" />
@@ -101,14 +101,6 @@
           <ScalarProperty Name="SDTNCC" ColumnName="SDTNCC" />
           <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
           <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="QuocGias">
-      <EntityTypeMapping TypeName="QLKHModel.QuocGia">
-        <MappingFragment StoreEntitySet="QuocGia">
-          <ScalarProperty Name="TenQG" ColumnName="TenQG" />
-          <ScalarProperty Name="MaQG" ColumnName="MaQG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

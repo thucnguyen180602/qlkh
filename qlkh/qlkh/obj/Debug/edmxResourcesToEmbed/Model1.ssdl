@@ -48,11 +48,11 @@
     <Property Name="Barcode" Type="nvarchar" MaxLength="13" Nullable="false" />
     <Property Name="TenHH" Type="nvarchar" MaxLength="50" />
     <Property Name="DonViTinh" Type="int" />
-    <Property Name="XuatXu" Type="int" />
     <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
     <Property Name="Created_Date" Type="datetime" />
     <Property Name="Disabled" Type="bit" />
     <Property Name="Created_By" Type="int" />
+    <Property Name="XuatXu" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="HHTrongKho">
     <Key>
@@ -93,13 +93,6 @@
     <Property Name="TenNCC" Type="nvarchar" MaxLength="100" />
     <Property Name="SDTNCC" Type="char" MaxLength="10" />
     <Property Name="EmailNCC" Type="nchar" MaxLength="100" />
-  </EntityType>
-  <EntityType Name="QuocGia">
-    <Key>
-      <PropertyRef Name="MaQG" />
-    </Key>
-    <Property Name="MaQG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TenQG" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -155,18 +148,6 @@
       </Principal>
       <Dependent Role="HangHoa">
         <PropertyRef Name="DonViTinh" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_hanghoa_QuocGia">
-    <End Role="QuocGia" Type="Self.QuocGia" Multiplicity="0..1" />
-    <End Role="HangHoa" Type="Self.HangHoa" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="QuocGia">
-        <PropertyRef Name="MaQG" />
-      </Principal>
-      <Dependent Role="HangHoa">
-        <PropertyRef Name="XuatXu" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -276,7 +257,6 @@
     <EntitySet Name="HHXK" EntityType="Self.HHXK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kho" EntityType="Self.Kho" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="QuocGia" EntityType="Self.QuocGia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ChungTu_DonVi" Association="Self.FK_ChungTu_DonVi">
@@ -289,10 +269,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_hanghoa_DonViTinh" Association="Self.FK_hanghoa_DonViTinh">
       <End Role="DonViTinh" EntitySet="DonViTinh" />
-      <End Role="HangHoa" EntitySet="HangHoa" />
-    </AssociationSet>
-    <AssociationSet Name="FK_hanghoa_QuocGia" Association="Self.FK_hanghoa_QuocGia">
-      <End Role="QuocGia" EntitySet="QuocGia" />
       <End Role="HangHoa" EntitySet="HangHoa" />
     </AssociationSet>
     <AssociationSet Name="FK_HHTrongKho_ChungTu" Association="Self.FK_HHTrongKho_ChungTu">

@@ -37,11 +37,10 @@
             this.colTenHH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDonViTinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.colNhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colXuatXu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTenTat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colXuatXu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colTenTat = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
@@ -101,7 +100,6 @@
             this.colBarcode,
             this.colTenHH,
             this.colDonViTinh,
-            this.colNhaCungCap,
             this.colXuatXu,
             this.colTenTat});
             this.gridView1.GridControl = this.gridControl1;
@@ -151,38 +149,6 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenDVT", "Tên đơn vị tính")});
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             // 
-            // colNhaCungCap
-            // 
-            this.colNhaCungCap.Caption = "Nhà cung cấp";
-            this.colNhaCungCap.ColumnEdit = this.repositoryItemLookUpEdit2;
-            this.colNhaCungCap.FieldName = "NhaCungCap";
-            this.colNhaCungCap.MinWidth = 25;
-            this.colNhaCungCap.Name = "colNhaCungCap";
-            this.colNhaCungCap.Visible = true;
-            this.colNhaCungCap.VisibleIndex = 3;
-            this.colNhaCungCap.Width = 94;
-            // 
-            // colXuatXu
-            // 
-            this.colXuatXu.Caption = "Xuất xứ";
-            this.colXuatXu.ColumnEdit = this.repositoryItemLookUpEdit3;
-            this.colXuatXu.FieldName = "XuatXu";
-            this.colXuatXu.MinWidth = 25;
-            this.colXuatXu.Name = "colXuatXu";
-            this.colXuatXu.Visible = true;
-            this.colXuatXu.VisibleIndex = 4;
-            this.colXuatXu.Width = 94;
-            // 
-            // colTenTat
-            // 
-            this.colTenTat.Caption = "Tên Tắt";
-            this.colTenTat.FieldName = "TenTat";
-            this.colTenTat.MinWidth = 25;
-            this.colTenTat.Name = "colTenTat";
-            this.colTenTat.Visible = true;
-            this.colTenTat.VisibleIndex = 5;
-            this.colTenTat.Width = 94;
-            // 
             // repositoryItemLookUpEdit2
             // 
             this.repositoryItemLookUpEdit2.AutoHeight = false;
@@ -193,6 +159,16 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenNCC", "Tên nhà cung cấp")});
             this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
             // 
+            // colXuatXu
+            // 
+            this.colXuatXu.Caption = "Xuất xứ";
+            this.colXuatXu.FieldName = "XuatXu";
+            this.colXuatXu.MinWidth = 25;
+            this.colXuatXu.Name = "colXuatXu";
+            this.colXuatXu.Visible = true;
+            this.colXuatXu.VisibleIndex = 3;
+            this.colXuatXu.Width = 94;
+            // 
             // repositoryItemLookUpEdit3
             // 
             this.repositoryItemLookUpEdit3.AutoHeight = false;
@@ -202,6 +178,16 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MaQG", "Mã quốc gia"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenQG", "Tên quốc gia")});
             this.repositoryItemLookUpEdit3.Name = "repositoryItemLookUpEdit3";
+            // 
+            // colTenTat
+            // 
+            this.colTenTat.Caption = "Tên Tắt";
+            this.colTenTat.FieldName = "TenTat";
+            this.colTenTat.MinWidth = 25;
+            this.colTenTat.Name = "colTenTat";
+            this.colTenTat.Visible = true;
+            this.colTenTat.VisibleIndex = 4;
+            this.colTenTat.Width = 94;
             // 
             // DanhMucHangHoa
             // 
@@ -236,7 +222,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colBarcode;
         private DevExpress.XtraGrid.Columns.GridColumn colTenHH;
         private DevExpress.XtraGrid.Columns.GridColumn colDonViTinh;
-        private DevExpress.XtraGrid.Columns.GridColumn colNhaCungCap;
         private DevExpress.XtraGrid.Columns.GridColumn colXuatXu;
         private DevExpress.XtraGrid.Columns.GridColumn colTenTat;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;

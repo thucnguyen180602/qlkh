@@ -23,14 +23,13 @@ namespace qlkh
         public string Barcode { get; set; }
         public string TenHH { get; set; }
         public Nullable<int> DonViTinh { get; set; }
-        public Nullable<int> XuatXu { get; set; }
         public string TenTat { get; set; }
         public Nullable<System.DateTime> Created_Date { get; set; }
         public Nullable<bool> Disabled { get; set; }
         public Nullable<int> Created_By { get; set; }
+        public string XuatXu { get; set; }
     
         public virtual DonViTinh DonViTinh1 { get; set; }
-        public virtual QuocGia QuocGia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HHTrongKho> HHTrongKhoes { get; set; }
     }

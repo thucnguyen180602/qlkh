@@ -198,5 +198,10 @@ namespace qlkh
 
             }
         }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(FrDoiMatKhau));
+        }
     }
 }

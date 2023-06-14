@@ -34,7 +34,6 @@ namespace qlkh
         public virtual DbSet<HHXK> HHXKs { get; set; }
         public virtual DbSet<Kho> Khoes { get; set; }
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
-        public virtual DbSet<QuocGia> QuocGias { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
