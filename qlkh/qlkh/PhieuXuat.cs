@@ -16,6 +16,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.Utils.MVVM;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using DevExpress.XtraEditors.Filtering.Templates;
+using DevExpress.XtraReports.UI;
 
 namespace qlkh
 {
@@ -249,6 +250,11 @@ namespace qlkh
                 }
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

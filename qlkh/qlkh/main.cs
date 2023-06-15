@@ -195,13 +195,34 @@ namespace qlkh
         {
             if (commons.user.ChucVu1.TenCV== "admin")
             {
-
+                openform(typeof(Phanquen));
+            }
+            else
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
             }
         }
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
             openform(typeof(FrDoiMatKhau));
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openform(typeof(nd));
+        }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (commons.user.ChucVu1.TenCV == "Nhân viên")
+            {
+                MessageBox.Show("bạn không có quyền try cập!");
+            }
+            else
+            {
+                openform(typeof(FrDonViTinh));
+            }
         }
     }
 }

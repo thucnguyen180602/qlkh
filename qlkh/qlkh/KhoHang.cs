@@ -1,6 +1,7 @@
 ﻿using DevExpress.ClipboardSource.SpreadsheetML;
 using DevExpress.Data.ExpressionEditor;
 using DevExpress.XtraEditors;
+using DevExpress.XtraExport.Helpers;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Base;
@@ -31,10 +32,29 @@ namespace qlkh
         List<HHTrongKho> hHTrongKhos;
         private void KhoHang_Load(object sender, EventArgs e)
         {
+            if (commons.user.ChucVu1.TenCV == "Nhân viên" || commons.user.ChucVu1.TenCV == "Quản lý")
+            {
+                comboBox3.Enabled = false;
+                checkBox1.Enabled = false;
+            }
+            else
+            {
+                comboBox3.Enabled = true;
+                checkBox1.Enabled = true;
+
+            }
+            comboBox3.DataSource = q.Khoes.ToList();
+            comboBox3.DisplayMember = "TenKH";
+            comboBox3.ValueMember = "MaKH";
+
+            comboBox3.Text = commons.user.Kho.TenKH;
+
+            comboBox3.SelectedIndexChanged += ComboBox3_SelectedIndexChanged;
+
             hHTrongKhos = new List<HHTrongKho>();
             loadcbb();
-            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-            comboBox2.SelectedIndexChanged += ComboBox2_SelectedIndexChanged;
+            //comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            //comboBox2.SelectedIndexChanged += ComboBox2_SelectedIndexChanged;
 
             var qq = from a in q.HangHoas select a;
             gridControl1.DataSource = qq.ToList();
@@ -56,32 +76,69 @@ namespace qlkh
             unboundColumn.AppearanceCell.BackColor = Color.FromArgb(179, 226, 221);
             gridView1.CustomUnboundColumnData += GridView1_CustomUnboundColumnData;
 
-
-            hHTrongKhos = (from a in q.HHTrongKhoes where a.SL>0 select a).ToList();
+            if (checkBox1.Checked==true)
+            {
+                hHTrongKhos = (from a in q.HHTrongKhoes select a).ToList();
+            }
+            else
+            {
+                hHTrongKhos = (from a in q.HHTrongKhoes where a.SL > 0 && a.Kho.MaKH == (int)comboBox3.SelectedValue select a).ToList();
+            }
+            //this.Load += GridView1_CustomUnboundColumnData;
+            // Tạo một hàm mới có chữ ký phù hợp với delegate EventHandler
+            //this.Load += new EventHandler(Form_Load);
+        }
+        private void Form_Load(object sender, EventArgs e)
+        {
+            GridView1_CustomUnboundColumnData(sender, null);
+        }
+        private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hHTrongKhos = (from a in q.HHTrongKhoes where a.SL > 0 && a.Kho.MaKH == (int)comboBox3.SelectedValue select a).ToList();
         }
 
         private void GridView1_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
         {
             GridView view = sender as GridView;
-            if (e.Column.FieldName == "SL1" && e.IsGetData) e.Value =
-              getTotalValue(view, e.ListSourceRowIndex);
+            if (e.Column.FieldName == "SL1" && e.IsGetData)
+            {
+                e.Value = getTotalValue(view, e.ListSourceRowIndex);
+                //@@@@@@
+                view.RefreshRow(e.ListSourceRowIndex);
+            }
         }
-
         decimal getTotalValue(GridView view, int listSourceRowIndex)
         {
             //ten hh theo gridview
             var ss = view.GetListSourceRowCellValue(listSourceRowIndex, "TenHH");
             int t=0;
-            var h = from a in q.HHTrongKhoes select new { a.SL,a.HangHoa.TenHH };
-            foreach (var item in h)
+            if (checkBox1.Checked==true)
             {
-                if (item.TenHH==ss.ToString())
+                var h = from a in q.HHTrongKhoes select new { a.SL, a.HangHoa.TenHH };
+                foreach (var item in h)
                 {
-                    int v = Convert.ToInt32(item.SL);
-                    t += v;
+                    if (item.TenHH == ss.ToString())
+                    {
+                        int v = Convert.ToInt32(item.SL);
+                        t += v;
+                    }
                 }
+                return t;
             }
-            return t;
+            else
+            {
+                var h = from a in q.HHTrongKhoes where a.Kho.MaKH == (int)comboBox3.SelectedValue select new { a.SL, a.HangHoa.TenHH };
+                foreach (var item in h)
+                {
+                    if (item.TenHH == ss.ToString())
+                    {
+                        int v = Convert.ToInt32(item.SL);
+                        t += v;
+                    }
+                }
+                return t;
+            }
+
         }
 
         // Specify data for the Total column.
@@ -95,8 +152,8 @@ namespace qlkh
                         join c in q.HangHoas on s.MaHH equals c.Barcode
                         group c by c.TenHH into g // nhóm theo trường TenHH
                         select new { t = g.Key }; // chọn tên hàng hóa làm khóa của mỗi nhóm
-            comboBox1.DataSource = query.ToList();
-            comboBox1.DisplayMember = "t";
+            //comboBox1.DataSource = query.ToList();
+            //comboBox1.DisplayMember = "t";
 
             // Lưu giá trị của comboBox2.SelectedValue.ToString() vào biến nhaCungCap
             //int nhaCungCap = int.Parse(comboBox2.SelectedValue.ToString());
@@ -109,7 +166,7 @@ namespace qlkh
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var qq = from a in q.HHTrongKhoes where a.MaKH == commons.user.MaKH && a.HangHoa.TenHH == comboBox1.Text && a.HangHoa.NhaCungCap1.TenNCC==comboBox2.Text select a;
+            //var qq = from a in q.HHTrongKhoes where a.MaKH == commons.user.MaKH && a.HangHoa.TenHH == comboBox1.Text && a.HangHoa.TenNCC==comboBox2.Text select a;
             //gridControl1.DataSource = qq.ToList();
         }
 
@@ -121,14 +178,14 @@ namespace qlkh
             //            select new { t = g.Key}; // chọn tên hàng hóa làm khóa của mỗi nhóm
             //comboBox1.DataSource = query.ToList();
             //comboBox1.DisplayMember = "t";
-            var query = from s in q.HangHoas select s.TenHH;
-            comboBox1.DataSource = query.Distinct().ToList();
-            comboBox1.DisplayMember = "TenHH";
+            //var query = from s in q.HangHoas select s.TenHH;
+            //comboBox1.DataSource = query.Distinct().ToList();
+            //comboBox1.DisplayMember = "TenHH";
 
-            var query1 = from s in q.NhaCungCaps select s;
-            comboBox2.DataSource = query1.ToList();
-            comboBox2.ValueMember = "MaNCC";
-            comboBox2.DisplayMember = "TenNCC";
+            //var query1 = from s in q.NhaCungCaps select s;
+            //comboBox2.DataSource = query1.ToList();
+            //comboBox2.ValueMember = "MaNCC";
+            //comboBox2.DisplayMember = "TenNCC";
         }
         public string s = "";
         void tt()
@@ -291,9 +348,14 @@ namespace qlkh
             s = string.Format("Đã chọn: {0}, Tổng số lượng: {1}", count, total);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            gridControl1.Refresh();
         }
     }
 }

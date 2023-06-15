@@ -1,10 +1,12 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -114,6 +116,20 @@ namespace qlkh
         private void gridView1_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
         {
             e.RelationName = "Chi tiết";//detail
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            XtraReport2 a = new XtraReport2();
+            var aa = from s in q.HHXKs where s.ChungTu.ToString() == ss select s;
+            a.DataSource = aa.ToList();
+            a.ShowPreviewDialog();
+        }
+        String ss;
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+            ss = gridView1.GetFocusedRowCellValue("ChungTu1").ToString();
+
         }
     }
 }
