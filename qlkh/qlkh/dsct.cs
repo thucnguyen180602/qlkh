@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -130,6 +131,29 @@ namespace qlkh
         {
             ss = gridView1.GetFocusedRowCellValue("ChungTu1").ToString();
 
+        }
+
+        private void gridControl1_EmbeddedNavigator_ButtonClick(object sender, NavigatorButtonClickEventArgs e)
+        {
+            if (e.Button.ButtonType == NavigatorButtonType.Remove)
+            {
+                delete(ss);
+                q.SaveChanges();
+            }
+        }
+        public void delete(String mabn)
+        {
+            try
+            {
+                var bn = q.ChungTus.FirstOrDefault(x => x.ChungTu1.ToString() == ss);
+                q.ChungTus.Remove(bn);
+                q.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("lỗi: " + ex.Message);
+            }
         }
     }
 }

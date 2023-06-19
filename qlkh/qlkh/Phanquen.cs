@@ -34,7 +34,7 @@ namespace qlkh
         {
             dbContext.SaveChanges();
         }
-
+        QLKHEntities q = new QLKHEntities();
         private void Phanquen_Load(object sender, EventArgs e)
         {
             repositoryItemLookUpEdit1.DataSource = dbContext.ChucVus.ToList();
@@ -46,6 +46,29 @@ namespace qlkh
             repositoryItemLookUpEdit2.ValueMember = "MaKH";
             repositoryItemLookUpEdit2.DisplayMember = "TenKH";
             colKho.ColumnEdit = repositoryItemLookUpEdit2;
+        }
+
+        private void gridControl1_EmbeddedNavigator_ButtonClick(object sender, NavigatorButtonClickEventArgs e)
+        {
+            if (e.Button.ButtonType == NavigatorButtonType.Remove)
+            {
+                delete((int)gridView1.GetFocusedRowCellValue("Id"));
+                dbContext.SaveChanges();
+            }
+        }
+        public void delete(int mabn)
+        {
+            try
+            {
+                var bn = q.Users.FirstOrDefault(x => x.Id == mabn);
+                q.Users.Remove(bn);
+                q.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("lỗi: " + ex.Message);
+            }
         }
     }
 }

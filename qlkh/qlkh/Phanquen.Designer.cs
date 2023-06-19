@@ -30,8 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUserName1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPassWord1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFullName1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colChucVu2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colMaKH1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPassWord = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -41,27 +50,19 @@
             this.colChucVu1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colChungTus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKho = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.colId1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colUserName1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPassWord1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFullName1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colChucVu2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMaKH1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.usersBindingSource1;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.ButtonClick += new DevExpress.XtraEditors.NavigatorButtonClickEventHandler(this.gridControl1_EmbeddedNavigator_ButtonClick);
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -73,9 +74,9 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // usersBindingSource
+            // usersBindingSource1
             // 
-            this.usersBindingSource.DataSource = typeof(qlkh.User);
+            this.usersBindingSource1.DataSource = typeof(qlkh.User);
             // 
             // gridView1
             // 
@@ -90,6 +91,80 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
+            // 
+            // colId1
+            // 
+            this.colId1.FieldName = "Id";
+            this.colId1.MinWidth = 25;
+            this.colId1.Name = "colId1";
+            this.colId1.Visible = true;
+            this.colId1.VisibleIndex = 0;
+            this.colId1.Width = 94;
+            // 
+            // colUserName1
+            // 
+            this.colUserName1.FieldName = "UserName";
+            this.colUserName1.MinWidth = 25;
+            this.colUserName1.Name = "colUserName1";
+            this.colUserName1.Visible = true;
+            this.colUserName1.VisibleIndex = 1;
+            this.colUserName1.Width = 94;
+            // 
+            // colPassWord1
+            // 
+            this.colPassWord1.FieldName = "PassWord";
+            this.colPassWord1.MinWidth = 25;
+            this.colPassWord1.Name = "colPassWord1";
+            this.colPassWord1.Visible = true;
+            this.colPassWord1.VisibleIndex = 2;
+            this.colPassWord1.Width = 94;
+            // 
+            // colFullName1
+            // 
+            this.colFullName1.FieldName = "FullName";
+            this.colFullName1.MinWidth = 25;
+            this.colFullName1.Name = "colFullName1";
+            this.colFullName1.Visible = true;
+            this.colFullName1.VisibleIndex = 3;
+            this.colFullName1.Width = 94;
+            // 
+            // colChucVu2
+            // 
+            this.colChucVu2.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.colChucVu2.FieldName = "ChucVu";
+            this.colChucVu2.MinWidth = 25;
+            this.colChucVu2.Name = "colChucVu2";
+            this.colChucVu2.Visible = true;
+            this.colChucVu2.VisibleIndex = 4;
+            this.colChucVu2.Width = 94;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // colMaKH1
+            // 
+            this.colMaKH1.ColumnEdit = this.repositoryItemLookUpEdit2;
+            this.colMaKH1.FieldName = "MaKH";
+            this.colMaKH1.MinWidth = 25;
+            this.colMaKH1.Name = "colMaKH1";
+            this.colMaKH1.Visible = true;
+            this.colMaKH1.VisibleIndex = 5;
+            this.colMaKH1.Width = 94;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataSource = typeof(qlkh.User);
             // 
             // colId
             // 
@@ -154,80 +229,6 @@
             this.colKho.Name = "colKho";
             this.colKho.Width = 94;
             // 
-            // usersBindingSource1
-            // 
-            this.usersBindingSource1.DataSource = typeof(qlkh.User);
-            // 
-            // colId1
-            // 
-            this.colId1.FieldName = "Id";
-            this.colId1.MinWidth = 25;
-            this.colId1.Name = "colId1";
-            this.colId1.Visible = true;
-            this.colId1.VisibleIndex = 0;
-            this.colId1.Width = 94;
-            // 
-            // colUserName1
-            // 
-            this.colUserName1.FieldName = "UserName";
-            this.colUserName1.MinWidth = 25;
-            this.colUserName1.Name = "colUserName1";
-            this.colUserName1.Visible = true;
-            this.colUserName1.VisibleIndex = 1;
-            this.colUserName1.Width = 94;
-            // 
-            // colPassWord1
-            // 
-            this.colPassWord1.FieldName = "PassWord";
-            this.colPassWord1.MinWidth = 25;
-            this.colPassWord1.Name = "colPassWord1";
-            this.colPassWord1.Visible = true;
-            this.colPassWord1.VisibleIndex = 2;
-            this.colPassWord1.Width = 94;
-            // 
-            // colFullName1
-            // 
-            this.colFullName1.FieldName = "FullName";
-            this.colFullName1.MinWidth = 25;
-            this.colFullName1.Name = "colFullName1";
-            this.colFullName1.Visible = true;
-            this.colFullName1.VisibleIndex = 3;
-            this.colFullName1.Width = 94;
-            // 
-            // colChucVu2
-            // 
-            this.colChucVu2.ColumnEdit = this.repositoryItemLookUpEdit1;
-            this.colChucVu2.FieldName = "ChucVu";
-            this.colChucVu2.MinWidth = 25;
-            this.colChucVu2.Name = "colChucVu2";
-            this.colChucVu2.Visible = true;
-            this.colChucVu2.VisibleIndex = 4;
-            this.colChucVu2.Width = 94;
-            // 
-            // colMaKH1
-            // 
-            this.colMaKH1.ColumnEdit = this.repositoryItemLookUpEdit2;
-            this.colMaKH1.FieldName = "MaKH";
-            this.colMaKH1.MinWidth = 25;
-            this.colMaKH1.Name = "colMaKH1";
-            this.colMaKH1.Visible = true;
-            this.colMaKH1.VisibleIndex = 5;
-            this.colMaKH1.Width = 94;
-            // 
-            // repositoryItemLookUpEdit1
-            // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            // 
-            // repositoryItemLookUpEdit2
-            // 
-            this.repositoryItemLookUpEdit2.AutoHeight = false;
-            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
-            // 
             // Phanquen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 28F);
@@ -238,11 +239,11 @@
             this.Text = "Phanquen";
             this.Load += new System.EventHandler(this.Phanquen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

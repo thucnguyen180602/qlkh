@@ -256,5 +256,28 @@ namespace qlkh
         {
 
         }
+
+        private void gridControl1_EmbeddedNavigator_ButtonClick(object sender, NavigatorButtonClickEventArgs e)
+        {
+            if (e.Button.ButtonType == NavigatorButtonType.Remove)
+            {
+                delete((int)gridView1.GetFocusedRowCellValue("Barcode"));
+                dbContext.SaveChanges();
+            }
+        }
+        public void delete(int mabn)
+        {
+            try
+            {
+                var bn = q.HHXKs.FirstOrDefault(x => x.idhhtk == mabn);
+                q.HHXKs.Remove(bn);
+                q.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("lỗi: " + ex.Message);
+            }
+        }
     }
 }

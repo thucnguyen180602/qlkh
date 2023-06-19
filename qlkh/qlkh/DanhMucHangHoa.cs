@@ -26,11 +26,11 @@ namespace qlkh
             // Call the LoadAsync method to asynchronously get the data for the given DbSet from the database.
             //var q = (from a in dbContext.HangHoas.Local where a.NhaCungCap==1 select a);
             //var list = new BindingList<HangHoa>(q.ToList());
-            
+
             dbContext.HangHoas.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
-                hangHoasBindingSource.DataSource = 
+                hangHoasBindingSource.DataSource =
                 dbContext.HangHoas.Local.ToBindingList();
             }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
         }
@@ -38,8 +38,8 @@ namespace qlkh
         private void DanhMucHangHoa_Load(object sender, EventArgs e)
         {
             repositoryItemLookUpEdit1.DataSource = q.DonViTinhs.ToList();
-            repositoryItemLookUpEdit1.ValueMember= "MaDVT";
-            repositoryItemLookUpEdit1.DisplayMember= "TenDVT";
+            repositoryItemLookUpEdit1.ValueMember = "MaDVT";
+            repositoryItemLookUpEdit1.DisplayMember = "TenDVT";
             colDonViTinh.ColumnEdit = repositoryItemLookUpEdit1;
 
             //C.ColumnEdit = repositoryItemLookUpEdit3;
@@ -50,6 +50,29 @@ namespace qlkh
         private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
         {
             dbContext.SaveChanges();
+        }
+
+        private void gridControl1_EmbeddedNavigator_ButtonClick(object sender, NavigatorButtonClickEventArgs e)
+        {
+            if (e.Button.ButtonType == NavigatorButtonType.Remove)
+            {
+                delete(gridView1.GetFocusedRowCellValue("Barcode").ToString());
+                dbContext.SaveChanges();
+            }
+        }
+        public void delete(string mabn)
+        {
+            try
+            {
+                var bn = q.HangHoas.FirstOrDefault(x => x.Barcode == mabn);
+                q.HangHoas.Remove(bn);
+                q.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("lỗi: " + ex.Message);
+            }
         }
     }
 }
